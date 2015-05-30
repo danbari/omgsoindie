@@ -1,5 +1,14 @@
 <center><!--<p id="logo"></p> --> 
-<h1>Our latest tracks</h1>
+<h1><font color = > <%= @page_title || "Our latest tracks" %></font><div id="logo"></div></h1>
+<nav>
+<center>
+	<ul>
+		<li><a href="http://localhost:3000/index/home"> Browse our selections </a></li>
+		<li><a href= "http://localhost:3000/index/about"> About</a></li>
+		 <!-- Admin -->
+		<li><a href="http://localhost:3000/simplelogin/userin"> Login </a></li>
+	</ul>
+</div></center>
 
 <p font=2> The we have <%= @music_count %> new album(s) </p> 
 
@@ -17,8 +26,8 @@
 <center><h3> Place an Order <h3><a href="http://localhost:3000/orders/new">Click Here</a></center> <!-- submits to orders controller -->
 
 
- <!-- Admin -->
- <h3> Admins </h3> <a href="http://localhost:3000/simplelogin/userin"> Click Here </a>
+
+
 
 
 

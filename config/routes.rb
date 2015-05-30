@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :authusers
   get 'showorders/ordersout'
 
-  root  :to => "index#home"  # this will locate a page to be localhost:3000 default 
+  root  :to => "index#about"  # this will locate a page to be localhost:3000 default 
 
   get 'index/home'
   get 'index/admin'
