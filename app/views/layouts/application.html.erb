@@ -1,14 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>OMG so Indie</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="OMG SO INDIE">
+    <meta name="author" content="IS372">
+    <head>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>OMG so Indie</title>
+    
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
 </head>
-<body>
+
+<body id="page-top" class="index">
+<!-- Navigation -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="hidden">
+                    <a href="#page-top"></a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#main">Main</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#browse">Browse</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                <li><a href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+            <div id="logo"></div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<!-- Main Section -->
+<section id="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h1><%= @page_title || "Our latest tracks" %></h1>
+        <p> <%= @music_count %> new album(s) </p> 
+          
+          <table> 
+          <th> Artist </th> 
+          <th> Album </th> 
+          <th> Released </th> 
+          <th> Price </th>
+            <% @music_list.each do |m| %>
+            <tr> 
+                <td> <%= m.Artist %> </td> 
+                <td> <%= m.Album %> </td> 
+                <td><%= m.Released %></td> 
+                <td> $<%= number_with_precision(m.Price, :precision => 2)%> </td>
+            </tr>
+            <% end %>
+          </table>
+
+          <!-- Customers see's this -->
+          <center><h3> Place an Order <h3><a href="http://localhost:3000/orders/new#new_order">Click Here</a></center> <!-- submits to orders controller -->
+
+        </div>
+    </div>
+  </div>
+</section>
+<!-- About Section -->
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">ABOUT</h2>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <p class="text-muted"> OMG SO INDIE is your next and last stop to buy music! We transcend music on literally every level and we aim to be your one and only stop for vinyls, CD’s, cassettes, downloadable’s and much more! We want to making finding music easy and purchase in the most convenient way possible so you can start listening as soon as possible.</p>
+            </div>
+            <div class="col-md-4">
+                <p class="text-muted">We started in the Spring of 2015 as a group of students at DePaul University working hoping to get an A in their software project management class. But the idea of getting and sharing music is something we want stay true to, and thus here we are. </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Browse section.  no content yet -->
+<section id="browse">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">Browse</h2>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <p class="text-muted">
+                  Coming soon! 
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Login Section -->
+<section id="login">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-4">
+                <p class="text-muted">
+              <p>You must be logged in to access the Maintenance Section of the System </p>
+               <p>Please enter your username name and password </p>
+
+                <%= form_tag(simplelogin_mylogin_path, :controller => "simplelogin", :action => "mylogin", :method => "post") do %>
+
+                  <div class="field">
+
+                  <%= label_tag :Userid_in %><br />
+
+                  <%= text_field_tag :userid_in %>
+                  </div>
+                  <div class="field">
+
+                  <%= label_tag :Password_in %><br />
+
+                  <%= text_field_tag :password_in %>
+                  </div>
+
+                  <div class="actions">
+
+                  <%= submit_tag "Submit for Authentication" %>
+                  </div>
+                  <% end %>
+                  <br />
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <%= yield %>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </body>
 </html>
