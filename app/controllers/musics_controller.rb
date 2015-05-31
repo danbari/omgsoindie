@@ -5,6 +5,8 @@ class MusicsController < ApplicationController
   # GET /musics.json
   def index
     @musics = Music.all
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # GET /musics/1

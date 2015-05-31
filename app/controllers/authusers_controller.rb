@@ -5,6 +5,8 @@ class AuthusersController < ApplicationController
   # GET /authusers.json
   def index
     @authusers = Authuser.all
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # GET /authusers/1
