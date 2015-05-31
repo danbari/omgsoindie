@@ -12,21 +12,29 @@ class MusicsController < ApplicationController
   # GET /musics/1
   # GET /musics/1.json
   def show
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # GET /musics/new
   def new
     @music = Music.new
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # GET /musics/1/edit
   def edit
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # POST /musics
   # POST /musics.json
   def create
     @music = Music.new(music_params)
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
 
     respond_to do |format|
       if @music.save

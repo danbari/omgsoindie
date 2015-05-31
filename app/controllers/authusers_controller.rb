@@ -12,22 +12,30 @@ class AuthusersController < ApplicationController
   # GET /authusers/1
   # GET /authusers/1.json
   def show
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # GET /authusers/new
   def new
     @authuser = Authuser.new
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # GET /authusers/1/edit
   def edit
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
   end
 
   # POST /authusers
   # POST /authusers.json
   def create
     @authuser = Authuser.new(authuser_params)
-
+    @music_count = Music.count # if it were local no @ symbol
+    @music_list = Music.all
+    
     respond_to do |format|
       if @authuser.save
         format.html { redirect_to @authuser, notice: 'Authuser was successfully created.' }
