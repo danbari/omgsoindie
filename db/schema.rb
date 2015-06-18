@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150530204232) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "adminpages", force: :cascade do |t|
     t.string   "adminout"
     t.datetime "created_at", null: false
